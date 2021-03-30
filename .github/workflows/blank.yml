@@ -35,7 +35,8 @@ jobs:
 #           args: git submodule update --init --recursive
       - name: get rid of garbage
         run: |
-          git submodule foreach --recursive git pull
+          git pull --recurse-submodules
+
 
       - name: Checkout submodules
         uses: textbook/git-checkout-submodule-action@master
