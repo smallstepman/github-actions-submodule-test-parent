@@ -32,7 +32,7 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
         run: |
-          git submodule update --recursive
-          git submodule update --recursive --remote
+          git submodule update --init --recursive
+          git submodule update --init --recursive --remote
           git pull --recurse-submodules
           find .
