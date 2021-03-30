@@ -18,9 +18,6 @@ jobs:
           submodules: true
       - name: get rid of garbage
         run: |
-          rm -rf child
-          git submodule update
-          git pull --recurse-submodules
           git submodule update --init --recursive --remote
           find .
           git config --global user.name 'smallstepman'
@@ -28,3 +25,6 @@ jobs:
           git add .
           git commit -m "Automated report"
           git push
+#          rm -rf child
+#          git submodule update
+#          git pull --recurse-submodules
