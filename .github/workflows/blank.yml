@@ -16,28 +16,10 @@ jobs:
         with:
           token: ${{ secrets.ACCESS_TOKEN }}
           submodules: true
-#       - name: Checkout submodules
-#         uses: srt32/git-actions@v0.0.3
-#         with:
-#           args: git submodule update --init --recursive
       - name: get rid of garbage
         run: |
           rm -rf child
           git submodule update
-# git pull --recurse-submodules
-#       - name: Checkout submodules
-#         uses: textbook/git-checkout-submodule-action@master
-#         with:
-#           remote: true
-      - name: push to main
-        run: |
-          find .
-          git config --global user.name 'smallstepman'
-          git config --global user.email 'smallstepman@users.noreply.github.com'
-          git add .
-          git push
-      - name: pull recurse submodules
-        run:  |
           git pull --recurse-submodules
           git submodule update --init --recursive --remote
           find .
@@ -46,5 +28,3 @@ jobs:
           git add .
           git commit -m "Automated report"
           git push
-      - name: Run a one-line script
-        run: find .
