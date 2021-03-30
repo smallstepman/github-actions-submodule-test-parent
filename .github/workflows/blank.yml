@@ -43,8 +43,7 @@ jobs:
         with:
           remote: true
       # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: find child/
+
       
       - name: push to main
         run: |
@@ -52,7 +51,8 @@ jobs:
           git config --global user.email 'your-username@users.noreply.github.com'
           git commit -am "Automated report"
           git push
-
+      - name: Run a one-line script
+        run: find .
       - name: pull recurse submodules
         run:  git pull --recurse-submodules
       
@@ -62,7 +62,8 @@ jobs:
           git config --global user.email 'your-username@users.noreply.github.com'
           git commit -am "Automated report"
           git push
-
+      - name: Run a one-line script
+        run: find .
 #       # Runs a set of commands using the runners shell
 #       - name: Run a multi-line script
 #         run: |
