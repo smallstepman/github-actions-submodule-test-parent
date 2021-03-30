@@ -25,14 +25,21 @@ jobs:
           rm -rf child
           git submodule update
 # git pull --recurse-submodules
-      - name: Checkout submodules
-        uses: textbook/git-checkout-submodule-action@master
-        with:
-          remote: true
-      - name: pull recurse submodules
-        run:  git pull --recurse-submodules
+#       - name: Checkout submodules
+#         uses: textbook/git-checkout-submodule-action@master
+#         with:
+#           remote: true
       - name: push to main
         run: |
+          find .
+          git config --global user.name 'smallstepman'
+          git config --global user.email 'smallstepman@users.noreply.github.com'
+          git add .
+          git commit -am "Automated report"
+          git push
+      - name: pull recurse submodules
+        run:  |
+          git pull --recurse-submodules
           git submodule update --init --recursive --remote
           find .
           git config --global user.name 'smallstepman'
