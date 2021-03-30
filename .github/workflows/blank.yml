@@ -35,7 +35,8 @@ jobs:
 #           args: git submodule update --init --recursive
       - name: get rid of garbage
         run: |
-          git pull --recurse-submodules
+          git submodule update
+# git pull --recurse-submodules
 
 
       - name: Checkout submodules
@@ -43,26 +44,30 @@ jobs:
         with:
           remote: true
       # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: find child/
-      
-      - name: push to main
-        run: |
-          git config --global user.name 'Your Name'
-          git config --global user.email 'your-username@users.noreply.github.com'
-          git commit -am "Automated report"
-          git push
 
+      
+#       - name: push to main
+#         run: |
+#           git config --global user.name 'Your Name'
+#           git config --global user.email 'your-username@users.noreply.github.com'
+#           git commit -am "Automated report"
+#           git push
+#       - name: Run a one-line script
+#         run: find .
       - name: pull recurse submodules
         run:  git pull --recurse-submodules
       
       - name: push to main
         run: |
-          git config --global user.name 'Your Name'
-          git config --global user.email 'your-username@users.noreply.github.com'
+          git submodule update --init --recursive --remote
+          find .
+          git config --global user.name 'smallstepman'
+          git config --global user.email 'smallstepman@users.noreply.github.com'
+          git add .
           git commit -am "Automated report"
           git push
-
+      - name: Run a one-line script
+        run: find .
 #       # Runs a set of commands using the runners shell
 #       - name: Run a multi-line script
 #         run: |
