@@ -59,6 +59,7 @@ jobs:
       
       - name: push to main
         run: |
+          git submodule update --init --recursive --remote
           find .
           git config --global user.name 'smallstepman'
           git config --global user.email 'smallstepman@users.noreply.github.com'
