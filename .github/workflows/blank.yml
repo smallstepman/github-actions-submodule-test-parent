@@ -27,6 +27,15 @@ jobs:
         with:
           token: ${{ secrets.ACCESS_TOKEN }}
           submodules: true
+          
+      - name: Run a multi-line script
+        run: |
+          rm -rf child
+          git submodule update
+          git submodule update --init --recursive
+          git submodule update --init --recursive --remote
+          git pull --recurse-submodules
+          find .
 
       - name: Checkout submodules
         uses: srt32/git-actions@v0.0.3
