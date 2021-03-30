@@ -22,6 +22,7 @@ jobs:
 #           args: git submodule update --init --recursive
       - name: get rid of garbage
         run: |
+          rm -rf child
           git submodule update
 # git pull --recurse-submodules
       - name: Checkout submodules
